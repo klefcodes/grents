@@ -1,7 +1,6 @@
 module.exports.up = (queryInterface, DataTypes) => {
-  // Create a table
   return queryInterface.createTable(
-    "restaurants",
+    "menu",
     {
       id: {
         allowNull: false,
@@ -9,17 +8,21 @@ module.exports.up = (queryInterface, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER.UNSIGNED,
       },
-      chef_id: {
+      restaurant_id: {
         allowNull: false,
         references: {
           key: "id",
-          model: "chefs",
+          model: "restaurants",
         },
         type: DataTypes.INTEGER.UNSIGNED,
       },
       name: {
         allowNull: false,
         type: DataTypes.STRING,
+      },
+      price: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
       },
       created_at: {
         allowNull: false,
@@ -34,9 +37,10 @@ module.exports.up = (queryInterface, DataTypes) => {
         type: DataTypes.DATE,
       },
     },
-    { charset: "utf8" }
+    {
+      charset: "utf8",
+    }
   );
 };
 
-module.exports.down = (queryInterface) =>
-  queryInterface.dropTable("restaurants");
+module.exports.down = (queryInterface) => queryInterface.dropTable("menu");
