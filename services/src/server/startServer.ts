@@ -2,9 +2,13 @@ import { ApolloServer } from "apollo-server-express";
 import * as cors from "cors";
 import * as express from "express";
 
+import resolvers from "#root/graphql/resolvers";
+import typeDefs from "#root/graphql/typeDefs";
 import accessEnv from "#root/helpers/accessEnv";
 
 const PORT = accessEnv("PORT", 5000);
+
+const apolloServer = new ApolloServer({ resolvers, typeDefs });
 
 const app = express();
 
@@ -23,6 +27,8 @@ app.use(
   })
 );
 
+apolloServer.applyMiddleware({ app, path: "/graphql" });
+
 app.listen(PORT, () => {
-    console.info(`Grents service is listening on ${PORT}`)
-})
+  console.info(`Grents service is listening on ${PORT}`);
+});
