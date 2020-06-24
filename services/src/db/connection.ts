@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize-typescript";
 
 import accessEnv from "#root/helpers/accessEnv";
 
-import models from "./models"
+import models from "./models";
 
 const DB_URL = accessEnv("DB_URL");
 
@@ -11,8 +11,14 @@ const sequelize = new Sequelize(DB_URL, {
     charset: "utf8",
     multipleStatements: true,
   },
+  define: {
+    timestamps: true,
+    underscored: true,
+    createdAt: "created_at",
+    updatedAt: "updated_at",
+  },
   logging: false,
-  models
+  models,
 });
 
 export default sequelize;
