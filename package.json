@@ -1,7 +1,7 @@
 {
   "name": "GRENTS",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application built with React, GraphQL, Express, Node, TypeScript, Sequelize",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
