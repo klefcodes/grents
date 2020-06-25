@@ -19,10 +19,16 @@ const typeDefs = gql`
     price: Int!
   }
 
+  type Mutation {
+    createChef(name: String!): Chef!
+    createRestaurant(chef_id: ID!, name: String!): Restaurant!
+  }
+
   type Query {
     chefs: [Chef!]!
     restaurants: [Restaurant!]!
     menu: [Menu!]!
+    singleChef(id: ID!): Chef!
   }
 `;
 
