@@ -4,7 +4,7 @@ interface Chef {
   restaurants: Restaurant[];
 }
 
-interface QueryData {
+export default interface QueryData {
   chefs: Chef[];
 }
 
@@ -13,4 +13,7 @@ interface Restaurant {
   name: string;
 }
 
-export default QueryData;
+export default interface createRestuarantData {
+  chef_id: string;
+  name: string;
+}
